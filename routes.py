@@ -31,7 +31,7 @@ def upload():
 
     try:
         classification = classify_message(content)
-        # generatedResponse = generate_response(content)
+        generatedResponse = generate_response(content)
         
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
@@ -39,6 +39,6 @@ def upload():
     return jsonify({
         "message": content,
         "classification": classification,
-        # "generatedResponse": generatedResponse
+        "generatedResponse": generatedResponse
     }), 200
 
