@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/response.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../static/scripts/ajax.js" defer></script>
+    <script src="../static/scripts/response.js" defer></script>
+
+    <title>Gerador Email</title>
+  </head>
+  <body>
+    <div class="background">
+      <h1>GERADOR DE EMAIL RESPOSTA</h1>
+      <div class="main">
+        <div class="div-classification"></div>
+        <h2>
+          Texto original, classificado como:
+          <span class="classification" id="classification"></span>
+        </h2>
+        <div>
+          <textarea name="original" id="original-area"></textarea>
+        </div>
+        <h2>Resposta Gerada:</h2>
+        <div class="div-response">
+          <textarea name="response" id="response-area"></textarea>
+        </div>
+
+        <div class="div-buttons">
+          <button class="button" id="return-button">Voltar</button>
+          <button class="button" id="copy-button">Copiar Resposta</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

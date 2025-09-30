@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../static/scripts/ui.js" defer></script>
+    <script src="../static/scripts/ajax.js" defer></script>
+
+    <title>Gerador Email</title>
+  </head>
+  <body>
+    <div class="background">
+      <div class="loader-background" id="loading">
+        <div class="loader"></div>
+        <span>GERANDO...</span>
+      </div>
+      <h1>GERADOR DE EMAIL RESPOSTA</h1>
+      <div class="main">
+        <div class="switch active-left" id="switch">
+          <div class="indicator"></div>
+          <div class="tab tab-left">Texto</div>
+          <div class="tab tab-right">Arquivo</div>
+        </div>
+        <form id="upload-form" enctype="multipart/form-data" class="form-data">
+          <div class="div-text">
+            <label for="text-input">Insira a mensagem do Email:</label>
+            <textarea name="text" id="text-input" maxlength="500"></textarea>
+            <input type="submit" value="Enviar" class="button submit-text" />
+          </div>
+          <div class="div-upload">
+            <label for="file-upload"
+              >Faça upload do arquivo .txt ou .pdf com o email:</label
+            >
+            <div class="custom-file-upload">
+              <label for="file-upload">Procurar arquivo</label>
+              <input
+                type="file"
+                id="file-upload"
+                name="file"
+                accept=".txt, .pdf"
+              />
+              <span id="file-name">Nenhum arquivo selecionado</span>
+            </div>
+            <input
+              type="submit"
+              value="Fazer Upload"
+              class="button submit-file"
+              id="submit-button"
+            />
+          </div>
+        </form>
+
+        <div class="text-instructions">
+          <span>INSTRUÇÕES</span>
+          <ol type="1" class="instructions-list">
+            <li>
+              Copie e cole ou escreva o conteúdo do email na área de texto acima
+            </li>
+            <li>Clique em Enviar</li>
+            <li>A categoria e resposta serão geradas</li>
+          </ol>
+        </div>
+        <div class="file-instructions">
+          <span>INSTRUÇÕES</span>
+          <ol type="1" class="instructions-list">
+            <li>Clique em procurar arquivo</li>
+            <li>Escolha um arquivo em .txt ou .pdf</li>
+            <li>Clique em Fazer Upload</li>
+            <li>A categoria e resposta serão geradas</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
