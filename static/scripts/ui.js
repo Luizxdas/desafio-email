@@ -37,3 +37,11 @@ fileInput.addEventListener("change", (event) => {
     fileNameSpan.textContent = "Nenhum arquivo selecionado";
   }
 });
+
+window.addEventListener("load", () => {
+  if (fileInput.files.length) {
+    fileNameSpan.textContent = fileInput.files[0].name;
+  } else {
+    fileNameSpan.textContent = "Nenhum arquivo selecionado";
+  }
+});
