@@ -25,8 +25,10 @@ body {
   align-items: center;
   justify-content: start;
 
-  width: 85rem;
-  height: 45rem;
+  margin-bottom: 5rem;
+
+  width: 70rem;
+  height: 30rem;
 
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 
@@ -145,7 +147,7 @@ label {
 }
 
 .submit-text {
-  margin-top: 12px;
+  margin-top: 2rem;
 }
 
 .div-upload {
@@ -188,40 +190,13 @@ label {
 }
 
 .submit-file {
-  margin-top: auto;
-  margin-bottom: 10px;
+  margin-top: 6rem;
+  margin-bottom: px;
 }
 
 .form-data {
   height: 22rem;
-}
-
-.text-instructions,
-.file-instructions {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-
-  align-items: center;
-
-  margin-top: 4rem;
-
-  width: 100%;
-
-  font-size: x-large;
-}
-
-.text-instructions li,
-.file-instructions li {
-  margin: 10px 0;
-}
-
-.text-list li:first-child {
-  margin-top: 0;
-}
-
-.file-instructions {
-  display: none;
+  margin-top: 1rem;
 }
 
 .loader-background {
