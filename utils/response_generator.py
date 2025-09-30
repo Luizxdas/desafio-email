@@ -25,12 +25,22 @@ from dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv("GOOGLE_API_KEY")
 
-def generate_response(text):
-    client = genai.Client(api_key=api_key)
+client = genai.Client(api_key=api_key)
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=f"Escreva apenas uma única resposta profissional e breve para o seguinte email, sem listas, sem alternativas e sem explicações adicionais. Apenas o texto da resposta:\n\n{text}",
-    )
-
-    return response.text
+def generate_response(text: str) -> str:
+    prompt = (
+    "Classifique o seguinte email em Produtivo (requerem ação, ex: suporte, dúvida sobre sistema, atualização) ou "
+    "Improdutivo (não requerem ação, ex: felicitações, agradecimentos, pessoal) "
+    "e gere uma resposta breve profissional.\n\n"
+    "Retorne apenas um JSON com os campos 'classification' e 'response'.\n\n"
+    f"Email:\n{text}"
+    )   
+    
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash-lite",
+            contents=prompt
+        )
+        return response.text.strip()
+    except Exception as e:
+        return f"Erro ao gerar resposta: {e}"
