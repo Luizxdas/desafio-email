@@ -5,20 +5,39 @@ const classification = document.getElementById("classification");
 const loading = document.getElementById("loading");
 const submitButton = document.getElementById("submit-button");
 
+const activateLoading = () => {
+  loading.style.display = "flex";
+  submitButton.disabled = true;
+};
+
+const deactivateLoading = () => {
+  loading.style.display = "none";
+  submitButton.disabled = false;
+};
+
 uploadForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  submitButton.disabled = true;
-  loading.style.display = "flex";
+  activateLoading();
 
   const formData = new FormData();
+  const submitter = e.submitter;
 
-  if (textInput.value.trim()) {
-    formData.append("text", textInput.value.trim());
-  } else if (fileInput.files.length) {
-    formData.append("file", fileUploaded.files[0]);
-  } else {
-    classification.innerHTML = `<p style="color:red;">Nenhum texto ou arquivo recebido.</p>`;
-    return;
+  if (submitter.classList.contains("submit-text")) {
+    if (textInput.value.trim()) {
+      formData.append("text", textInput.value.trim());
+    } else {
+      alert("Digite o texto antes de enviar!");
+      deactivateLoading();
+      return;
+    }
+  } else if (submitter.classList.contains("submit-file")) {
+    if (fileInput.files.length) {
+      formData.append("file", fileInput.files[0]);
+    } else {
+      alert("Selecione um arquivo antes de enviar!");
+      deactivateLoading();
+      return;
+    }
   }
 
   try {
@@ -30,16 +49,14 @@ uploadForm.addEventListener("submit", async (e) => {
     const data = await response.json();
 
     if (data.error) {
-      classification.innerHTML = `<p style="color:red;"><strong>Erro:</strong> ${data.error}</p>`;
+      alert(`Erro: ${data.error}`);
     } else {
       localStorage.setItem("responseData", JSON.stringify(data));
-
       window.location.href = "/response";
     }
   } catch (err) {
-    classification.innerHTML = `<p style="color:red;">Erro na requisição: ${err}</p>`;
+    alert(`Erro: ${err}`);
   } finally {
-    loading.style.display = "none";
-    submitButton.disabled = false;
+    deactivateLoading();
   }
 });
